@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<script src="https://cdn.tailwindcss.com"></script>
+ </head>
+ <body class="overflow-hidden">
+     <div class="flex flex-col item-center justify-end min-h-screen bg-black p-4">
+     <!-- Inner container with width constraint and border -->
+     <div class="w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto md:border-2 border-[#FF9500] rounded-2xl  ">
+      
+      <input id="myinput" readonly class="w-full pr-4 sm:pr-4 md:pr-7 text-8xl sm:text-6xl md:text-8xl text-white text-right bg-black rounded-lg overflow-hidden" type="text" placeholder="0" >
+      
+      <div class="grid grid-cols-4 gap-2 sm:gap-1 md:gap-3 mt-2 sm:mt-3 md:mt-4">
+        <button id="clear" class="text-black text-2xl sm:text-lg md:text-2xl rounded-full bg-[#D4D4D2] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">AC</button>
+        <button id="backspace" class="text-black text-2xl sm:text-lg md:text-2xl rounded-full bg-[#D4D4D2] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">DE</button>
+        <button id="dot" class="text-black text-2xl sm:text-lg md:text-2xl rounded-full bg-[#D4D4D2] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">%</button>
+        <button id="divide" class="text-white text-2xl sm:text-lg md:text-2xl rounded-full bg-[#FF9500] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">÷</button>
+        <button id="seven" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">7</button>
+        <button id="eight" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">8</button>
+        <button id="nine" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">9</button>
+        <button id="multiply" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#FF9500] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center ">&times;</button>
+        <button id="four" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">4</button>
+        <button id="five" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">5</button>
+        <button id="six" class="text-white text-2xl sm:text-xl md:text-3xl rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">6</button>
+        <button id="minus" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#FF9500] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">-</button>
+        <button id="one" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">1</button>
+        <button id="two" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">2</button>
+        <button id="three" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">3</button>
+        <button id="plus" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#FF9500] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">+</button>
+        <button id="dblzero" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">00</button>
+        <button id="zero" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">0</button>
+        <button id="percent" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#505050] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">.</button>
+        <button id="equal" class="text-white text-2xl sm:text-xl md:text-3xl  rounded-full bg-[#FF9500] aspect-square p-1 sm:p-3 md:p-4 flex items-center justify-center">=</button>
+        </div>
+    </div>
+    <style>
+  #myinput.error {
+    font-size: clamp(4rem, 9vw, 3rem) !important;
+  }
+</style>
+    <script type="text/javascript">
+    let inputField= document.getElementById("myinput");
+    const btnOne= document.getElementById("one");
+    const btnTwo= document.getElementById("two");
+    const btnThree= document.getElementById("three");
+    const btnFour= document.getElementById("four");
+    const btnFive= document.getElementById("five");
+    const btnSix= document.getElementById("six");
+    const btnSeven= document.getElementById("seven");
+    const btnEight= document.getElementById("eight");
+    const btnNine= document.getElementById("nine");
+    const btnZero= document.getElementById("zero");
+    const btnPlus= document.getElementById("plus");
+    const btnMinus= document.getElementById("minus");
+    const btnMultiply= document.getElementById("multiply");
+    const btnDivide= document.getElementById("divide");
+    const btnEqual= document.getElementById("equal");
+    const btnClear= document.getElementById("clear");
+    const btnDot= document.getElementById("dot");
+    const btnBack= document.getElementById("backspace");
+    const btnPercent= document.getElementById("percent");
+    const btndblzero= document.getElementById("dblzero");
+    let resultDisplayed = false;
+
+    btnOne.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "1";
+    });
+    btnTwo.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "2";
+    });
+    btnThree.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "3";
+    });
+    btnFour.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "4";
+    });
+    btnFive.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "5";
+    });
+    btnSix.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "6";
+    });
+    btnSeven.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "7";
+    });
+    btnEight.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "8";
+    });
+    btnNine.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "9";
+    });
+    btnZero.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "0";
+    });
+    btnClear.addEventListener("click", () => {
+        inputField.value = "";
+        resultDisplayed = false;
+    }); 
+    btnPlus.addEventListener("click", () => {
+        resultDisplayed = false;
+        inputField.value += "+";
+    } );
+    btnMinus.addEventListener("click", () => {
+        resultDisplayed = false;
+        inputField.value += "-";
+    });
+    btnMultiply.addEventListener("click", () => {
+        resultDisplayed = false;
+        inputField.value += "*";
+    });
+    btndblzero.addEventListener("click", () => {
+        if (resultDisplayed) {
+            inputField.value = "";
+            resultDisplayed = false;
+        }
+        inputField.classList.remove("error");
+        inputField.value += "00";
+    });
+    btnEqual.addEventListener("click", () => {
+        try {
+            let expression = inputField.value;
+            let result = eval(expression);
+            inputField.value = result;
+            resultDisplayed = true;
+            inputField.classList.remove("error");
+        } catch (error) {
+            inputField.value = "Syntax Error";
+            inputField.classList.add("error");
+            resultDisplayed = true;
+        }
+    });
+    btnDivide.addEventListener("click", () => {
+        inputField.value += "÷";
+    });
+    btnPercent.addEventListener("click", () => {
+        inputField.value += ".";
+    });
+    btnBack.addEventListener("click", () => {
+        inputField.value = inputField.value.slice(0, -1);
+    });
+    btnDot.addEventListener("click", () => {
+        inputField.value += "%"; 
+    });
+    // Add event listener for keyboard input
+    document.addEventListener("keydown", (event) => {
+        if (!isNaN(event.key)) {
+            inputField.value += event.key;
+        } else if (["+", "-", "*", "/", "."].includes(event.key)) {
+            inputField.value += event.key;
+        } else if (event.key === "Backspace") {
+            inputField.value = inputField.value.slice(0, -1);
+        } else if (event.key === "Enter" || event.key === "=") {
+            try {
+                expression = inputField.value;
+                result = eval(expression);
+                inputField.value = result;
+                inputField.classList.remove("error");
+            } catch (error) {
+                inputField.value = "Syntax Error";
+                inputField.classList.add("error");
+            }
+        } else if (event.key === "Escape") {
+            inputField.value = "";
+        }
+    });
+    
+    </script>
+<body>
+</html>
